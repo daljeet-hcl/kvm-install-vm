@@ -6,10 +6,11 @@ connect locally to your KVM domains.
 
 NOTE:
   I have changed it to connect to 'qemu:///system' becuase networking on 'qemu://session' is quite limited.
-you also need to add following line to your ~/.bashrc file if you are using the bash shell. (~/.zshrc file if you want to use zsh shell)
+you also need to add following line to your ~/.bashrc file.
  
 This script appends the required line to you ~/.bashrc
- echo "export VIRSH_DEFAULT_CONNECT_URI=qemu:///system" >> ~/.bashrc
+
+ ## echo "export VIRSH_DEFAULT_CONNECT_URI=qemu:///system" >> ~/.bashrc
 
 
 Tested on the latest Fedora.
