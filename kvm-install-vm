@@ -16,8 +16,9 @@ SYNOPSIS
 
 DESCRIPTION
     A bash wrapper around virt-install to build virtual machines on a local KVM
-    hypervisor. You can run it as a normal user which will use qemu:///session
-    to connect locally to your KVM domains.
+    hypervisor. You can run it as a normal user which will use qemu:///system
+    to connect locally to your KVM domains. I am not using qemu://session because 
+    VMs created with qemu://session have very limited networking capbilities.
 
 COMMANDS
     help        - show this help or help for a subcommand
