@@ -1,6 +1,9 @@
 #!/bin/bash
 set -e
 
+# you can change the default URI to "qemu:///session"
+export LIBVIRT_DEFAULT_URI="qemu:///system"
+
 # Set program name variable - basename without subshell
 prog=${0##*/}
 
@@ -725,7 +728,7 @@ _EOF_
     sudo chown nobody:kvm ${CI_ISO}
     # Call virt-install to import the cloud image and create a new VM
     run "Installing the domain" \
-        virt-install --connect qemu:///system --import \
+        virt-install --import \
         --name=${VMNAME} \
         --memory=${MEMORY} \
         --vcpus=${CPUS} \
