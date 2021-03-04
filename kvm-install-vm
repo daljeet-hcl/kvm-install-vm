@@ -719,6 +719,9 @@ _EOF_
     CI_ISO_OPTION="$(param --disk ${CI_ISO_PARAMS})"
     GRAPHICS_OPTION="$(param --graphics ${GRAPHICS_PARAMS})"
 
+    echo "change ownership of DISK and CI_ISO"
+    sudo chown nobody:kvm ${DISK}
+    sudo chown nobody:kvm ${CI_ISO}
     # Call virt-install to import the cloud image and create a new VM
     run "Installing the domain" \
         virt-install --connect qemu:///system --import \
@@ -834,7 +837,7 @@ function set_defaults ()
     FEATURE=host                    # Use host cpu features to the guest
     MEMORY=1024                     # Amount of RAM in MB
     DISK_SIZE=""                    # Disk Size in GB
-    DNSDOMAIN=example.local         # DNS domain
+    DNSDOMAIN=""                    # DNS domain
     GRAPHICS=spice                  # Graphics type or "auto"
     RESIZE_DISK=false               # Resize disk (boolean)
     IMAGEDIR=${HOME}/virt/images    # Directory to store images
@@ -848,7 +851,7 @@ function set_defaults ()
     ADDITIONAL_USER=${USER}         # User
     ASSUME_YES=0                    # Assume yes to prompts
     ASSUME_NO=0                     # Assume no to prompts
-    VERBOSE=0                       # Verbosity
+    VERBOSE=1                       # Verbosity
 
     # Reset OPTIND
     OPTIND=1
